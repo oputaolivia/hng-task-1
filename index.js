@@ -10,7 +10,7 @@ const date = new Date()
 
 app.get("/api", (req, res)=>{
     const {slack_name, track} = req.query;
-    const day = date.getFullYear()+ "-" + (date.getMonth()+1) + "-"+ date.getSeconds() + "T";
+    const day = date.getFullYear()+ "-" + "0"+(date.getMonth()+1) + "-"+ "0"+date.getDate() + "T";
     const time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "Z";
     res.status(200).json({
         slack_name,
@@ -19,7 +19,7 @@ app.get("/api", (req, res)=>{
         }),
         utc_time: day + time,
         track,
-        github_file_url: "https://github.com/oputaolivia/hng-task-1/repo/blob/main/index.js" ,
+        github_file_url: "https://github.com/oputaolivia/hng-task-1/blob/main/index.js" ,
         github_repo_url: "https://github.com/oputaolivia/hng-task-1",
         status_code: res.statusCode
     })
